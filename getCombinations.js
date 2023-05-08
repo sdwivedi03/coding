@@ -1,11 +1,15 @@
 function countCombinations(matrix, str){
     // console.log(matrix);
+
+    let checkDir = str.length === 1 ? 1 : 8;
     let count = 0;
     for(let i = 0; i < matrix.length; i++){
         for(let j = 0; j < matrix[0].length; j++){
-            for(let k = 0; k < 8; k++){
-                if(stringFound(matrix, str, i , j, k)) count++;
-            }
+                
+                for(let k = 0; k < checkDir; k++){
+                    if(stringFound(matrix, str, i , j, k)) count++;
+                }
+            
         }
     }
     return count;
@@ -32,8 +36,8 @@ function stringFound(matrix, str, row, col, direction){
 }
 
 
+//Test case cases
 
-//Test case
 let matrix = [
  ['a', 'c', 'd', 'e',  'f',  's'],
  ['g', 'k',  'r', 'n',  't',  't'],
@@ -43,6 +47,6 @@ let matrix = [
  ['e', 'q',  't', 'o',  'r',  'p']
 ];
 
-let str = 'star';
 
-console.log(countCombinations(matrix, str));
+console.log(countCombinations(matrix, 'star'));
+console.log(countCombinations(matrix, 's'));
